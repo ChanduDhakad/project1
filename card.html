@@ -1,0 +1,106 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Grocery store in india</title>
+    <style>
+        #container{
+            display: flex;
+
+        }
+        #div{
+            border: 2px solid red;
+        }
+        #img2{
+            margin-left: 4px;
+            border: 2px solid red;
+width: 18px;
+height: 18px;
+
+        }
+        #p1{
+            border: 2px solid red; 
+        }
+        #p2{
+            border: 2px solid green; 
+        }
+        #p3{
+            border: 2px solid blue;
+    margin-top: -39px;
+    justify-content: right;
+    text-align: right;
+    margin-right: 94px;
+}
+        
+        #p4{
+            border: 2px solid violet; 
+        }
+        #a{
+            display: flex;
+        }
+        #tp,#amt{
+            display: inline-block;
+        }
+    </style>
+<body>
+   <h1>welcome to card page</h1> 
+   <div id="a">
+   <h2 id="tp">Total Price   <p id="amt">0</p></h2>
+</div>
+   <div id="container"></div>
+</body>
+</html>
+<script>
+    var data= JSON.parse(localStorage.getItem("cart"))||[];
+// console.log(data);
+var bug=0;
+for(var i=0;i<data.length;i++){
+    var c=Number(data[i].price);
+    // console.log(c);
+    // console.log(typeof(c))
+    var bug=bug+c;
+}
+    
+    console.log(bug);
+    document.querySelector("#amt").innerText=bug;
+
+data.map(function(item){
+    console.log(item)
+    // event.preventDefault();
+    var div1=document.createElement("div");
+    div1.setAttribute("id","div");
+    // var p1=document.createElement("p");
+    // p1.innerText=item.of;
+    var img1=document.createElement("img");
+img1.setAttribute("src",item.img);
+img1.setAttribute("id",img1);
+var img2=document.createElement("img");
+img2.setAttribute("src",item.vg);
+img2.setAttribute("id","img2")
+var p1=document.createElement("h4");
+    p1.innerText=item.h;
+    p1.setAttribute("id","p1")
+
+    var p2=document.createElement("p");
+    p2.innerText=item.kg;
+    p2.setAttribute("id","p2")
+
+    var p3=document.createElement("p");
+    p3.innerText=item.price;
+ 
+    var p4=document.createElement("p");
+    p4.innerText="Price ";
+    p4.setAttribute("id","p4");
+    p3.setAttribute("id","p3");
+
+ div1.append(img1,img2,p1,p2,p4,p3);
+document.getElementById("container").append(div1);
+
+});
+var total=JSON.parse(localStorage.getItem("price"));
+
+</script>

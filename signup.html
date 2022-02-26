@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <!-- <link rel="stylesheet" href="/Styles/index.css" /> -->
+    <style>
+      #form{
+        width: 60%;
+        margin:auto;
+        /* border:2px solid red; */
+      }
+      input{
+        width: 54%;
+      
+      }
+      #submit{
+        margin-top: 22px;
+        height:34px;
+
+      }
+      p{
+        font-size: 22px;
+        margin:auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="database.html">Database</a></div>
+      <div><a href="admitted.html">Admitted</a></div>
+      <div><a href="rejected.html">Rejected</a></div>
+    </div> -->
+
+
+    <main>
+      <form action="" id="form">
+        <h2>Create  Your Account</h2>
+        <h4>Your Name</h4>
+        <input placeholder="Name" id="name" name="name" type="text" />
+        <h4>Enter Your email Address</h4>
+        <input placeholder="Enter Your email" type="email" name="age" id="email" />
+        <h4>Password</h4>
+        <input placeholder="At least 6  characters" type="password" name="email" id="password" />
+        <h4>Password again</h4>
+        <input placeholder="" type="password" name="email" id="againpassword" />
+
+<br>
+        <input id="submit" type="submit" name="submit" value="SignUp" />
+        <p> Already have an account?<a href="index.html">login</a></p>
+    
+      </form>
+    </main>
+ 
+  </body>
+ 
+</html>
+<!-- ....---------------------------------------------? -->
+
+
+<script>
+
+
+    document.querySelector("#form").addEventListener("submit",sgn);
+   
+  
+    var  signupdata=JSON.parse(localStorage.getItem("Signup"))||[];
+
+    function sgn(event){
+   event.preventDefault();
+      //  console.log("good bye")
+           var name1=document.getElementById("name").value
+      var email1=document.getElementById("email").value
+      var pwd1=document.getElementById("password").value
+
+      var vfypwd1=document.getElementById("againpassword").value;
+// int()
+      
+     var sig=JSON.parse(localStorage.getItem("Signup"))||[];
+     console.log(sig);
+     var i=0;
+     var p=0;
+     var d=0;
+     sig.map(function(item){
+       if(email1==item.email && p==0){
+         alert("You indicated you are a new customer, but an account already exists with the email  Use sign-in instead to continue with this email.")
+         p++
+       }
+      
+       else{
+         i++
+       }
+      console.log(item.length,i);
+     });
+//  console.log(pwd1,vfypwd1);
+  if(pwd1!=vfypwd1 && d==0){
+    alert("Passwords do not match");
+    d++
+  }
+var obj={
+    name:name1,
+email:email1,
+pwd:pwd1,
+vfypwd:vfypwd1,
+
+};
+if(p==0 && d==0){
+  signupdata.push(obj);
+  localStorage.setItem("Signup",JSON.stringify(signupdata));
+  alert("Signup successful");
+  window.location.href="login.html"
+}
+
+
+// console.log(signupdata)
+// localStorage.clear();
+
+
+  };
+  var prod=JSON.parse(localStorage.getItem("Signup"));
+
+
+</script>

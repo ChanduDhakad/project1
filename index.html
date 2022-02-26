@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+      #form{
+        width: 40%;
+        margin:auto;
+        border:2px solid red;
+      }
+      #btn{
+        margin-top:44px;  
+        width: 70%;
+      }
+      input{
+        width: 54%;
+      
+      }
+      #submit{
+        margin-top: 22px;
+        height:34px
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="database.html">Database</a></div>
+      <div><a href="admitted.html">Admitted</a></div>
+      <div><a href="rejected.html">Rejected</a></div>
+    </div> -->
+
+    <main>
+      <form action="" id="form">
+        <h2>Sign-In</h2>
+       
+        <h4>Enter Your  email</h4>
+        <input placeholder="Enter Your  email" type="email" name="age" id="email" />
+        <h4>Password</h4>
+        <input placeholder="At least 6  characters" type="password" name="email" id="password" />
+      
+<br>
+        <input id="submit" type="submit" name="submit" value="Login" />
+
+        <input type="button" id="btn" value="Create your account ">
+
+
+      </form>
+<!-- <input type="button" id="btn" value="Create your Amazon account"> -->
+
+    </main>
+  </body>
+ 
+</html>
+<!-- ....---------------------------------------------? -->
+
+
+<script>
+
+
+    document.querySelector("#form").addEventListener("submit",fun);
+    document.querySelector("#btn").addEventListener("click",singup);
+  function singup(){
+      event.preventDefault();
+      console.log("singup")
+      window.location.href="signup.html"
+  }
+    var  signupdata=JSON.parse(localStorage.getItem("Signup"))||[];
+   var c=0;
+    function fun(){
+        var i=0;
+        event.preventDefault();
+
+      var email1=document.getElementById("email").value
+      var pwd1=document.getElementById("password").value
+signupdata.map(function(item){
+    console.log(signupdata.length)
+    if((email1==item.email)&&(pwd1==item.pwd)){
+        alert("login successful");
+  
+      window.location.href="homepage.html"
+    }
+    else{
+     i++
+      int(i);
+      console.log(i)
+    }
+function int(c){
+    if(c==signupdata.length){
+        alert("login failed");
+    }
+}
+console.log(item);
+});
+    }
+</script>
